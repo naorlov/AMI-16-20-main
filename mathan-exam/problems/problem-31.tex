@@ -1,0 +1,47 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T1,T2A]{fontenc}        % Кодировки шрифтов
+\usepackage[utf8]{inputenc}         % Кодировка текста
+\usepackage[english,russian]{babel} % Подключение поддержки языков
+
+\usepackage{amsthm}                 % Оформление теорем
+\usepackage{amsmath}                 % Оформление теорем
+\usepackage{amstext}                % Текстовые вставки в формулы
+\usepackage{amsfonts}               % Математические шрифты
+
+\newtheorem*{ther}{Теорема}
+\newtheorem*{defi}{Определение}
+
+\newcommand{\eps}{\varepsilon}
+\newcommand{\drv}{^{\prime}}
+
+\begin{document}
+
+    \section*{Билет 31}
+    Дайте определение дифференцируемой функции и дифференциала. Укажите
+    геометрический смысл дифференциала.
+
+    \subsection*{Решение}
+    \begin{defi}
+        Функция $f:E\rightarrow \mathbb{R}$ называется
+        \textbf{дифференцируемой} в точке $x_0\in E$, если существует такая
+        линейная (относительно приращения $x-x_0$ аргумента) функция $A\cdot
+        (x-x_0)$, что приращение $f(x) - f(x_0)$ функции $f$ представляется в
+        виде $f(x)-f(x_0) = A \cdot (x-x_0) + o(x-x_0)$ при $E \ni x \to x_0$.
+    \end{defi}
+
+    \begin{defi}
+        Линейная функция $A\cdot(x-x_0)$ называется дифференциалом функции $f$
+        в точке $x_0$. Из предыдущего определения
+        $\lim\limits_{E\ni x \to x_0}\frac{f(x)-f(x_0)}{x-x_0}
+        =
+        \lim\limits_{E\ni x \to x_0}\big(A + \frac{o(x-x_0)}{x-x_0} \big) = A$;
+        в силу единственности предела (билет 8) число $A$ определено
+        однозначно.
+    \end{defi}
+
+    \begin{defi}
+        Геометрический смысл: дифференциал функции $f$ есть приращение ординаты
+        касательной в графику $f$ в данной точке.
+    \end{defi}
+\end{document}

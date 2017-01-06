@@ -1,0 +1,31 @@
+
+\subsection*{Определения}
+\subsection*{Производная функции}
+	Производная функции в точке:
+	$\lim _{{\Delta x\to 0}}{\ddfrac  {f(x_{0}+\Delta x)-f(x_{0})}{\Delta x}}$\\
+	Правая производная:
+	$\lim _{{\Delta x\to +0}}{\ddfrac  {f(x_{0}+\Delta x)-f(x_{0})}{\Delta x}}$\\
+	Левая производная:
+	$\lim _{{\Delta x\to -0}}{\ddfrac  {f(x_{0}+\Delta x)-f(x_{0})}{\Delta x}}$
+\subsection*{Геометрический смысл производной}
+	Если функция ${f\colon U(x_{0})\to \mathbb {R} }$
+	  имеет конечную производную в точке $x_0$, то в окрестности
+		 $U(x_{0})$ её можно приблизить линейной функцией
+${f_{l}(x)\equiv f(x_{0})+f'(x_{0})(x-x_{0})}$.
+Функция ${f_{l}}$ называется касательной к $f$
+в точке $x_{0}$ Число ${f'(x_{0})}$
+ является угловым коэффициентом (угловым коэффициентом касательной) или тангенсом угла наклона касательной прямой.
+ \subsection*{Задача}
+ Показать по определению, что производная $\sin^{2}(x)$ равна $\sin(2x)$.
+ \subsubsection*{Решение}
+ $\lim _{{\Delta x\to 0}}{\ddfrac{\sin^2(x+\Delta x)-sin^2(x)}{\Delta x}}$ =
+ $\lim _{{\Delta x\to 0}}{\ddfrac{(\sin(x+\Delta x)-sin(x))\cdot
+ (\sin(x+\Delta x)+sin(x)))}{\Delta x}}$ =\\=
+ $\lim _{{\Delta x\to 0}}{\ddfrac{2\sin(\frac{\Delta x)}{2})\cdot\cos(x+\frac{\Delta x}{2})
+ 2\cos(\frac{\Delta x}{2}) \cdot\sin(x+\frac{\Delta x)}{2})
+ }{\Delta x}}$ =\\= $\lim _{{\Delta x\to 0}}{\ddfrac{2\sin(\Delta x)\cdot\cos(x+\frac{\Delta x}{2})
+ \cdot\sin(x+\frac{\Delta x)}{2})
+ }{\Delta x}}$ = $\lim _{{\Delta x\to 0}}{\ddfrac{\sin(2x+\Delta x)\cdot\sin(\Delta x)}{\Delta x}}$
+ = $\sin(2x)$
+
+

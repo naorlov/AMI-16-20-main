@@ -1,0 +1,50 @@
+Сформулируйте теоремы Ролля, Лагранжа, Коши
+
+\subsection*{Решение}
+\begin{ther}[\textbf{Ролля}]
+    Если $f$ непрерывна на отрезке $[a,b]$, дифференцируема на интервале
+    $(a,b)$ и $f(a)=f(b)$, то
+    $$\big[\exists c \in (a,b)\big]\big(f\drv(c) = 0\big)$$
+\end{ther}
+\begin{proof}
+    Если $f=const$, то очевидно $f\drv(x)=0$ и $f(a)=f(b)$. Иначе, из
+    непрерывности и ограниченности по теореме Вейерштрасса $[\exists c_1,
+    c_2\in(a,b)]\big(f(c_1 = inf(f), f(c_2)=sup(f))\big)$. Поскольку $f\neq
+    const$, $f(c_1)<f(c_2)$. При этом хотя бы одна из точек $c_1, c_2$
+    внутренняя, то есть не совпадает с $a$ или $b$, пусть это точка
+    $c_1\in(a,b)$. Тогда $[\exists
+    \delta>0]\big(u_{\delta}(c_1)\subset(a,b)\big)$ и $[\forall x \in u_{\delta}
+    ]\big((c_1) < f(x)\big)$, то есть $c_1$ -- точка локального минимума, а
+    по теореме Ферма $f\drv(c-1) = 0$.
+\end{proof}
+
+
+\begin{ther}[\textbf{Лагранжа}]
+    Если $f$ непрерывна на отрезке $[a,b]$ и дифференцируема на интервале
+    $(a,b)$, то $$\big[\exists c \in (a,b)\big]\Big(
+    \frac{f(b)-f(a)}{b-a}=f\drv(c) \Big)$$
+\end{ther}
+\begin{proof}
+    Рассмотрим функцию $g(x) = f(x)+\lambda\cdot x$. Подберём такое
+    значение $\lambda$, чтобы выполнялось условие теоремы Ролля, то есть
+    $g(a)=g(b)$. Запишем $f(a) + \lambda a = f(b) + \lambda b$, отсюда
+    $\lambda = \frac{f(b)-f(a)}{a-b}$. Тогда $[\exists c \in
+    (a,b)]\big(g\drv(c) = 0\big)\Rightarrow f\drv(c) + \lambda = 0
+    \Rightarrow f\drv(c) = \frac{f(b)-f(a)}{b-a}$, что и требовалось
+    доказать.
+\end{proof}
+
+
+\begin{ther}[\textbf{Коши}]
+    Если $f$, $g$ непрерывны на отрезке $[a,b]$, дифференцируемы на интервале
+    $(a,b)$ и $g\drv(x)\neq 0$ на $(a,b)$, то $$\big[\exists c \in
+    (a,b)\big]\Big(
+    \frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f\drv(c)}{g\drv(c)} \Big)$$
+\end{ther}
+\begin{proof}
+    Рассмотрим функцию $F(x) = f(x)+\lambda\cdot g(x)$, где
+    $\lambda = -\frac{f(b)-f(a)}{g(b)-g(a)}$, тогда $F$ удовлетворяет
+    условию теоремы Ролля, то есть $[\exists c]\big( F\drv(c) = 0\big)$;
+    $f\drv(c)+\lambda g\drv(c) = 0 \Rightarrow \frac{f(b)-f(a)}{g(b)-g(a)}
+    = \frac{f\drv(c)}{g\drv(c)}$.
+\end{proof}

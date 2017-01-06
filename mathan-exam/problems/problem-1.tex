@@ -1,0 +1,79 @@
+Дайте определение вещественного числа и правила сравнения вещественных чисел. Сформулируйте свойства вещественных чисел, связанные с неравенствами. Докажите, что число $\sqrt{2} + \sqrt{3}$ -- иррациональное.
+
+
+\subsection*{Теория}
+
+\begin{definition}
+	Множеством \textbf{вещественных чисел} называют такое множество элементов, на котором определены операции \textbf{сложения} $+: \R \times \R \rightarrow \R$ и \textbf{умножения} $\cdot: \R \times \R \rightarrow \R$, которое удовлетворяет следующим аксиомам:
+\end{definition}
+\begin{enumerate}
+	\item Cложение
+	
+	\subitem 1. Существует такой \textit{нейтральный} элемент 0, такой что $\forall x \in \R \Rightarrow x + 0 = 0 + x = x$
+	
+	\subitem 2. $\forall x \in R $ существует \textit{противоположный} элемент $ (-x): \  x + (-x) = (-x) + x = 0$
+	
+	\subitem 3. \textit{Ассоциативность}: $\forall x, y, z \in \R \Rightarrow (x + y) + z = x + (y + z)$
+	
+	\subitem 4. \textit{Коммутативность}: $\forall x, y \in \R \Rightarrow x + y = y + x$
+	
+	
+	\item Умножение
+	
+	\subitem 1. Cуществует такой \textit{нейтральный} элемент 0, такой что $\forall x \in \R \Rightarrow x \cdot 1 = 1 \cdot x = x$
+	
+	\subitem 2. $\forall x \in \R, x \neq 0$ cуществует обратный элемент $x^{-1}: \ x^{-1} \cdot x = x \cdot x^{-1} = 1$
+	
+	\subitem 3. \textit{Ассоциативность}: $\forall x, y, z \in \R \Rightarrow (x \cdot y) \cdot z = x \cdot (y \cdot z)$
+	
+	\subitem 4. \textit{Коммутативность}: $\forall x, y \in \R \Rightarrow x \cdot y = y \cdot x$
+	
+	\item \textit{Дистрибутивность}: $\forall x, y, z \in \R \Rightarrow (x + y)z = xz + yz$
+	
+	\item Порядок
+			
+	Для любых элементов $a, b, c \in \R$ определена операция $a \leqslant b$, такая что
+	
+	\subitem 1. $a \leqslant a$
+	\subitem 2. $(a \leqslant b \land b \leqslant a) \Rightarrow a = b$
+	\subitem 3. $(a \leqslant b \land b \leqslant c) \Rightarrow a \leqslant c$
+	\subitem 4. Cправедливо утверждение $(a \leqslant b \lor b \leqslant a)$
+	
+	\subitem $\forall x, y, z \in \R, \ x \leqslant y \Rightarrow \ x + z \leqslant y + x$
+	
+	\subitem $\forall x, y: \ 0 \leqslant x, \ 0 \leqslant y \  \Rightarrow  \ 0 \leqslant xy$
+			
+	\item Полнота
+	Пусть есть два непустых множества $X \subset \R, Y \subset \R$. Тогда если $ x \in X, y \in Y, x \leqslant y \Rightarrow \exists c \in \R: x \leqslant c \leqslant y$.
+	
+	
+	Пример такого поля можно построить при помощи бесконечных десятичных дробей.
+\end{enumerate}
+
+
+\subsection*{Решение}
+\begin{task}
+	Докажите, что $\sqrt{2} + \sqrt{3} \notin \Q$
+\end{task}
+
+\begin{proof}
+Для начала докажем, что $\sqrt{6} \notin \Q$. Пусть $\sqrt{6} = \frac{p}{q}, GCD(p, q) = 1$. Тогда
+\[
+6 = \frac{p^2}{q^2} \Rightarrow 6q^2 = p^2 \Rightarrow 6 \divby p \Rightarrow 6 \divby p \Rightarrow p = 2k
+\]
+\[
+6q^2 = 4k^2 \Rightarrow 3q^2 = 2k^2 \Rightarrow q \divby 2
+\]
+
+Получили, что дробь сократима, что является противоречием.
+
+Теперь докажем, что $\sqrt{2} + \sqrt{3} \notin Q$:
+\[
+(\sqrt{2} + \sqrt{3})^2 = 5 + 2\sqrt{6}
+\]
+\[
+\sqrt{2} + \sqrt{3} = \sqrt{5 + 2\sqrt{6}}
+\]
+Так как иррациональность числа $ \sqrt{6} $ уже доказана, значит все выражение иррационально.
+\end{proof}
+

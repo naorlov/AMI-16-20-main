@@ -1,0 +1,40 @@
+\begin{theorem}[Коши-Кантор]
+	Для любой системы вложенных отрезков 
+	\[[a_1, b_1] \supset [a_2, b_2] \supset \cdots \supset [a_n, b_n] \supset \cdots \]
+
+	Существует хотя бы одна точка $c$, принадлежайшая всем отрезкам данной системы. Причем если длины отрезков стремятся к 0, то такая точка единственна.
+\end{theorem}
+
+\begin{Proof}
+	\  \\
+	\begin{itemize}
+		\item \textbf{Существование такой точки.} Пусть $A = \{\forall i| \ a_i\}$, и $B = \{\forall i| \ b_i\}$. Тогда любой элемент из $A$, меньше любого элемента из $B$, воспользуемся аксиомой/теоремой о непрерывности и находим такую точку $c$. (Если это не было аксиомой, то легко видеть, что точка $c = \sup A$ нам подходит).
+
+		\item \textbf{Если предел длин отрезков равен 0, то такая точка единственна} Пусть существует хотя бы две такие точки: $c_1, c_2$, тогда по условию с какого то момента длины отрезков будут меньше чем $\frac{|c_1 - c_2|}{2}$ значит отрезок с такой длиной не может содержать в себе обе таких точки, противоречие.
+	\end{itemize}
+\end{Proof}
+
+\begin{task}
+	\[ \lim_{n \rightarrow \infty} \frac{\sqrt{n^2 + n} - \sqrt{n^2 - n}}{\sqrt{2n^2 + n} - \sqrt{2n^2 - n}}\]
+
+	\[ \lim_{n \rightarrow \infty} \frac{\sqrt{n^2 + n} - \sqrt{n^2 - n}}{\sqrt{2n^2 + n} - \sqrt{2n^2 - n}} = \lim_{n \rightarrow \infty} \frac{n (\sqrt{1 + \frac1n} - \sqrt{1 - \frac1n})}{\sqrt2n\sqrt{1 + \frac{1}{2 n}} - \sqrt{1 - \frac{1}{2 n}}}\]
+
+	\[\lim_{n \rightarrow \infty} \frac{\sqrt{1 + \frac1n} - \sqrt{1 - \frac1n}}{\sqrt2(\sqrt{1 + \frac{1}{2 n}} - \sqrt{1 - \frac{1}{2 n}})}\]
+
+	Рассмотрим предел
+
+	\[\lim_{n \rightarrow \infty} \frac{\sqrt{1 + \frac1n} - 1}{\frac1n}\]
+
+	Домножим на сопряженное:
+
+	\[\lim_{n \rightarrow \infty} \frac{1}{1 + \sqrt{1 + \frac1n}} = \frac12\]
+
+	Значит
+
+	\[\sqrt{1 + \frac1n} = 1 + \frac{1}{2 n} + o\left(\frac{1}{n} \right)\]
+
+	Применяя это к нашей задаче:
+
+	\[\lim_{n \rightarrow \infty} \frac{\frac{1}{n} + o\left(\frac{1}{n} \right)}{\sqrt2 \frac{1}{2n} + o\left(\frac{1}{n} \right)} = \lim_{n \rightarrow \infty} \frac{2 + o\left(1\right)}{\sqrt2 + o\left(1\right)} = \sqrt2 \]
+\end{task}
+

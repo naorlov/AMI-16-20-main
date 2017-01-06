@@ -1,0 +1,731 @@
+\documentclass[a4paper,12pt]{article}
+
+%% Начало шапки
+
+%% Настройка поддержки русского языка
+\usepackage{cmap}                   % Поиск по кириллице
+\usepackage{mathtext}               % Кириллица в формулах
+\usepackage[T1,T2A]{fontenc}        % Кодировки шрифтов
+\usepackage[utf8]{inputenc}         % Кодировка текста
+\usepackage[english,russian]{babel} % Подключение поддержки языков
+
+%% Настройка размеров полей
+\usepackage[top=0.7in, bottom=0.75in, left=0.625in, right=0.625in]{geometry}
+
+%% Математические пакеты
+\usepackage{mathtools}              % Тот же amsmath, только с некоторыми поправками
+\usepackage{amssymb}                % Математические символы
+\usepackage{amsthm}                 % Оформление теорем
+\usepackage{amstext}                % Текстовые вставки в формулы
+\usepackage{amsfonts}               % Математические шрифты
+\usepackage{icomma}                 % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+\usepackage{enumitem}               % Для выравнивания itemize (\begin{itemize}[align=left])
+\usepackage{array}                  % Таблицы и матрицы
+\usepackage{multirow}
+
+%% Алгоритмические пакеты и их настройки
+\usepackage{algorithm}              % Шапка алгоритма
+\usepackage{algorithmicx}           % Написание алгоритмов
+\usepackage[noend]{algpseudocode}   % Написание псевдокода; убраны end
+\usepackage{listings}               % Для кода на каком-либо языке программиования
+\renewcommand{\algorithmicrequire}{\textbf{Ввод:}}              % Ввод
+\renewcommand{\algorithmicensure}{\textbf{Вывод:}}              % Вывод
+\floatname{algorithm}{Алгоритм}                                 % Название алгоритма
+\renewcommand{\algorithmiccomment}[1]{\hspace*{\fill}\{// #1\}} % Комментарии
+\newcommand{\algname}[1]{\textsc{#1}}                           % Вызов функции в алгоритме
+
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%% Шрифты
+\usepackage{euscript}               % Шрифт Евклид
+\usepackage{mathrsfs}               % \mathscr{}
+
+%% Графика
+\usepackage[pdftex]{graphicx}       % Вставка картинок
+\graphicspath{{images/}}            % Стандартный путь к картинкам
+\usepackage{tikz}                   % Рисование всего
+\usepackage{pgfplots}               % Графики
+\usetikzlibrary{calc,matrix}
+
+%% Прочие пакеты
+\usepackage{indentfirst}                    % Красная строка в начале текста
+\usepackage{epigraph}                       % Эпиграфы
+\usepackage{fancybox,fancyhdr}              % Колонтитулы
+\usepackage[colorlinks=true, urlcolor=blue]{hyperref}   % Ссылки
+\usepackage{titlesec}                       % Изменение формата заголовков
+\usepackage[normalem]{ulem}                 % Для зачёркиваний
+\usepackage[makeroom]{cancel}               % И снова зачёркивание (на этот раз косое)
+
+%% Прочее
+\mathtoolsset{showonlyrefs=true}        % Показывать номера только у тех формул,
+% на которые есть \eqref{} в тексте.
+\renewcommand{\headrulewidth}{1.8pt}    % Изменяем размер верхнего отступа колонтитула
+\renewcommand{\footrulewidth}{0.0pt}    % Изменяем размер нижнего отступа колонтитула
+
+%Прочее
+\usepackage{forest} % Деревья
+
+\renewcommand{\Re}{\mathrm{Re\:}}
+\renewcommand{\Im}{\mathrm{Im\:}}
+\newcommand{\Arg}{\mathrm{Arg\:}}
+\renewcommand{\arg}{\mathrm{arg\:}}
+\newcommand{\Mat}{\mathrm{Mat}}
+\newcommand{\M}{\mathrm{M}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\isom}{\xrightarrow{\sim}} 
+\newcommand{\leftisom}{\xleftarrow{\sim}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Ker}{\mathrm{Ker}\:}
+\newcommand{\rk}{\mathrm{rk}\:}
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\ort}{\mathrm{ort}}
+\newcommand{\pr}{\mathrm{pr}}
+\newcommand{\vol}{\mathrm{vol\:}}
+\newcommand{\Tr}{\mathrm{tr\:}}
+\newcommand{\sgn}{\mathrm{sgn\:}}
+\newcommand{\al}{\alpha}
+
+%% Определения
+\newtheorem{definition}{Определение}
+\newtheorem*{defin}{Определение}
+\newtheorem{Def}{Определение}
+\newtheorem*{Lemma}{Лемма}
+\newtheorem{Suggestion}{Предложение}
+\newtheorem*{Examples}{Пример}
+\newtheorem*{Consequence}{Следствие}
+\newtheorem{Theorem}{Теорема}
+\newtheorem{Statement}{Утверждение}
+\newtheorem*{Task}{Упражнение}
+\newtheorem*{Designation}{Обозначение}
+\newtheorem*{Generalization}{Обобщение}
+\newtheorem*{Thedream}{Предел мечтаний}
+\newtheorem*{Properties}{Свойства}
+\newtheorem*{Note}{Замечание}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\C}{\mathbb{C}}
+\renewcommand{\L}{\mathscr{L}}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\newcommand{\e}{\mathbb{e}}
+\renewcommand{\l}{\lambda}
+\newcommand{\E}{\mathbb{E}}
+\def\eps{\varepsilon}
+\def\limref#1#2{{#1}\negmedspace\mid_{#2}}
+\newcommand{\vvector}[1]{\begin{pmatrix}{#1}_1 \\\vdots\\{#1}_n\end{pmatrix}}
+\renewcommand{\vector}[1]{({#1}_1, \ldots, {#1}_n)}
+
+\definecolor{Gray}{gray}{0.9}
+\newcolumntype{g}{>{\columncolor{Gray}}c}
+
+\newtheorem*{canonther}{Теорема о приведении матрицы к каноническому виду}
+\newtheorem*{lem}{Лемма}
+\newtheorem*{lem1}{Лемма 1}
+\newtheorem*{lem2}{Лемма 2}
+\newtheorem*{lem3}{Лемма 3}
+
+
+
+\begin{document}
+	\title{Авель. Определения. Сделано по Каину.}
+	\author{ПМИ 2016 \\ Орлов Никита}
+	\maketitle
+	 
+	Выражается отдельная благодарность Вадиму Гринбергу за предоставленный материал, а так же всем нашим однокурсникам за помощь в разработке этого сборника
+	
+	\begin{enumerate}
+		\item СЛУ называется совместной, если у неё есть решения (хотя бы одно), и несовместной в противном случае.
+		\item Две СЛУ эквивалентны тогда и только тогда, когда имеют одинаковое множество решений.
+		\item Расширенная матрица системы линейный уравнений это матрица, вида $(A|B)$, где $A$ - матрица коэффициентов, $B$ - столбец свободных членов.
+		
+		Пример:
+		\[
+		\left(
+			\begin{array}{ccc|c}
+			a_{11} & \ldots & a_{1m} & b_1 \\
+			\vdots & \ddots & \vdots & \vdots \\
+			a_{n1} & \ldots & a_{nm} & b_n
+			\end{array}
+		\right)
+		\]
+		
+		\item Элементарными преобразованиями строк матрицы называют:
+		\subitem 1) прибавление к любой строке матрицы другой, умноженной на ненулевое число.
+		\subitem 2) перестановку местами любых двух строк матрицы;
+		\subitem 3) умножение любой строки матрицы на константу $k, k \neq 0$ (при этом определитель
+		матрицы увеличивается в $k$ раз);
+		
+		\item Матрица называется ступенчатой, или имеющей ступенчатый вид, если:
+		\subitem 1) номера ведущих элементов строк строго возрастают;
+		\subitem 2) все нулевые строки стоят в конце (внизу).
+		
+		\item Матрица называется улучшенной ступенчатой, или канонической, если:
+		\subitem 1) она имеет ступенчатый вид;
+		\subitem 2) все ведущие элементы равны 1 и это единственный ненулевой элемент в столбцах, где они стоят
+		
+		\item Теорема о приведении матрицы к каноническому виду. Всякую матрицу элементарными преобразованиями можно привести к канонической.
+
+		\item Общее решение СЛУ - запись решения, в котором базисные переменные выражены через свободные. 
+		
+		\item У СЛУ с действительными коэффициентами может быть 0, 1 или бесконечно много решений.
+		
+		\item Однородная СЛУ - система, где столбец свободных членов - нулевой:
+		\[
+		A\overrightarrow{x} = \overrightarrow{0}
+		\Leftrightarrow
+		\left(
+		\begin{array}{ccc|c}
+		a_{11} & \ldots & a_{1m} & 0 \\
+		\vdots & \ddots & \vdots & \vdots \\
+		a_{n1} & \ldots & a_{nm} & 0
+		\end{array}
+		\right)
+		\]
+		
+		У такой системы может быть либо одно решение, либо бесконечно много. 
+		
+		\item Однородная система линейных уравнений, в которой число уравнений меньше числа неизвестных, имеет ненулевое решение. В общем же случае это верно не всегда.
+		
+		\item Пусть есть матрицы $A, B \in Mat_{n \times m}$. Тогда определена операция сложения матриц $A + B$:
+		\[
+		C = A + B
+		\]
+		\[
+		c_{ij} = a_{ij} + b_{ij}
+		\]
+		
+		Пусть есть число $\alpha \in \mathbb{R}$. Тогда определена операция умножения матрицы на скаляр $\alpha \cdot A$:
+		\[
+		D = \alpha \cdot A
+		\]
+		\[
+		d_{ij} = \alpha \cdot a_{ij}
+		\]
+		
+		\item Транспонированием матрицы $A \in Mat_{n \times m}$ называется такая матрица $A^T \in Mat_{m \times n}$, в которой строки записаны в виде столбцов:
+		\[
+		a_{ij} = a^T_{ji}
+		\]
+		
+		\item Пусть есть матрицы $A \in Mat_{n \times k}, B \in Mat_{k \times m}$. Произведением матриц $A \times B$ будет называться матрица $C \in Mat_{n \times m }$, с элементами 
+		\[
+		c_{ij} = \sum_{r = 1}^{k}a_{ir}b_{rj}
+		\]
+		
+		\item Диагональной матрицей будет квадратная матрица, где вне главной диагонали стоят нули.
+		\[
+		diag(a_{11}, \ldots, a_{nn}) = 
+		\begin{pmatrix}
+		a_{11} & 0 & \ldots & 0\\
+		0 & a_{22} & \ldots & 0 \\
+		\vdots &  & \ddots & \vdots \\
+		0 & 0 & 0 &a_{nn}
+		\end{pmatrix}
+		\]
+		
+		\item Матрица $A \in M_n$ называется единичной, если она диагональная и на диагонали стоят единицы.
+		
+		\[
+		diag(1, \ldots, 1) = 
+		\begin{pmatrix}
+			1 & 0 & \cdots & 0 \\
+			0 & 1 & \cdots & 0 \\
+			\vdots && \ddots & \vdots \\
+			0 & 0 & \cdots & 1
+		\end{pmatrix}
+		\]
+		Умножение единичной матрицы слева и справа на произвольную квадратную матрицу $A$ той же размерности, она не меняется:
+		\[
+		EA = AE = A
+		\]
+		
+		\item Следом квадратной матрицы $A$ является сумма всех диагональных элементов матрицы $A$.
+		\[
+		trA = \sum_{i = 1}^{n}a_{ii}
+		\]
+		
+		\item Пусть есть матрицы $A \in Mat_{n \times m}, B \in Mat_{m \times n}$. Тогда
+		
+		\[
+		trAB = trBA
+		\]
+		
+		\item Перестановкой из $n$ элементов на множестве $\{1, 2, \ldots, n\}$ является любой упорядоченный набор $n$ элементов, где каждый встречается ровно один раз. Число таких перестановок - $n!$.
+		
+		Подстановкой является биективное отображение множества $\{1, 2, \ldots , n\}$ в себя.
+		
+		\item Пусть есть подстановка $\sigma$. Тогда инверсией будет называться такая пара индексов $i, j$, что 
+		\[
+		i < j \Rightarrow \sigma(i) > \sigma(j)
+		\]
+		
+		Пусть $k$ - число таких инверсий в $\sigma$. Тогда знаком посдтановки будет:
+		\[
+		sgn(\sigma) = -1^k
+		\]
+		\item Пусть есть две подстановки $\sigma$ и $\tau$. Тогда умножением подстановок будет их композиция:
+		
+		\[
+		\sigma \circ \tau = \sigma(\tau(n))
+		\]
+		
+		\item Тождественная подстановка - такая подстановка $id$, которая переводит элементы сами в себя:
+		\[
+		\forall i: id(i) = i
+		\]
+		
+		Обратная подстановка - такая подстановка к данной $\sigma$, что \[
+		\sigma \circ \sigma^{-1} = id
+		\]
+		
+		\item Транспозиция - такая подстановка, что меняет два элемента местами.
+		
+		Элементарная транспозиция - такая транспозиция, что меняет два \textit{соседних} элемента местами.
+		
+		\item При умножении транспозиции на подстановку, у подстановки меняется знак на противоположный:
+		\[
+			sgn(\sigma \tau) = -sgn(\sigma)
+		\]
+		
+		\item Знак произведения подстановок есть произведение знаков подстановок
+		\[
+			sgn(\sigma \rho) = sgn(\sigma) \cdot sgn(\rho)
+		\]
+		
+		\item Пусть есть матрица $A \in M_n$. Определителем матрицы назовем число, которое считается по формуле:
+		\[
+		detA = \sum_{\sigma \in S_n} sgn(\sigma) \prod_{i = 1}^n\cdot a_{i\sigma(i)}
+		\]
+		\item Определитель порядка $2 \times 2$:
+		\[
+		\begin{vmatrix}
+		a & b \\
+		c & d
+		\end{vmatrix}
+		= ad - bc
+		\]
+		Определитель порядка $3 \times 3$:
+		\[
+		\begin{vmatrix}
+		a_{11} & a_{12} & a_{13} \\
+		a_{21} & a_{22} & a_{23} \\
+		a_{31} & a_{32} & a_{33}
+		\end{vmatrix}
+		= 
+		a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32} - a_{13}a_{22}a_{31} - a_{12}a_{21}a_{33} - a_{11}a_{23}a_{32}
+		\]
+		
+		\item При транспонировании определитель не меняет знак:
+		\[
+		\det A = \det A^T
+		\]
+		Следующие 4 определния равносильны для столбцов
+		\item При умножении строки (столбца) на скаляр он выносится за знак определителя:
+		\[
+		\det\left(
+		\begin{matrix}
+		A^{(1)}\\
+		\vdots\\
+		A^{(i)} \cdot a\\
+		\vdots\\
+		A^{(n)}
+		
+		\end{matrix}
+		\right)
+		=
+		a \cdot \det\left(
+		\begin{matrix}
+		A^{(1)}\\
+		\vdots\\
+		A^{(i)}\\
+		\vdots\\
+		A^{(n)}
+		
+		\end{matrix}
+		\right)
+		\]
+		\item При перестановке двух строк (столбцов) определитель меняет знак
+		\[
+		\det\left(
+		\begin{matrix}
+		A^{(1)}\\
+		\vdots\\
+		A^{(i)}\\
+		\vdots\\
+		A^{(j)}\\
+		\vdots\\
+		A^{(n)}
+		
+		\end{matrix}
+		\right)
+		=
+		- \det\left(
+		\begin{matrix}
+		A^{(1)}\\
+		\vdots\\
+		A^{(j)}\\
+		\vdots\\
+		A^{(i)}\\
+		\vdots\\
+		A^{(n)}
+		
+		\end{matrix}
+		\right)
+		\]
+		\item Если какую-нибудь строчку (столбец) можно разложить в сумму двух, то определитель раскладывается в сумму определителей
+		\[
+		\det\left(
+		\begin{matrix}
+		A^{(1)}\\
+		\vdots\\
+		A^{(i)} + A'^{(i)}\\
+		\vdots\\
+		A^{(n)}
+		
+		\end{matrix}
+		\right)
+		=
+		\det\left(
+		\begin{matrix}
+		A^{(1)}\\
+		\vdots\\
+		A^{(j)}\\
+		\vdots\\
+		A^{(n)}
+		
+		\end{matrix}
+		\right)
+		+
+		\det\left(
+		\begin{matrix}
+		A^{(1)}\\
+		\vdots\\
+		A'^{(i)}\\
+		\vdots\\
+		A^{(n)}
+		
+		\end{matrix}
+		\right)
+		\]
+	
+		\item При прибавлении к строке (столбцу) другой, умноженной на скаляр, определитель не меняется
+		\[
+		\det\left(
+		\begin{matrix}
+		A^{(1)} \\
+		\vdots \\
+		A^{(i)} + \alpha \cdot A^{(j)}\\
+		\vdots \\
+		A^{(j)} \\
+		\vdots \\
+		A^{(n)}
+		
+		\end{matrix}
+		\right)
+		=
+		\det\left(
+		\begin{matrix}
+		A^{(1)}\\
+		\vdots\\
+		A^{(i)}\\
+		\vdots\\
+		A^{(j)}\\
+		\vdots\\
+		A^{(n)}
+		
+		\end{matrix}
+		\right)
+		\]
+		\item 	
+		Матрица $A \in  M_n$ – $\textbf{верхнетреугольная}$, если
+		$a_{ij} = 0$  при  $i > j$  (т.е. ниже диагонали).
+		\[
+		\begin{pmatrix}
+			a_{11} & \cdots & a_{1n} \\
+			0      & \ddots & \vdots \\
+			0      & 0      & a_{nn}
+		\end{pmatrix}
+		\]
+		Матрица $A \in  M_n$ – $\textbf{нижнетреугольная}$, если
+		$a_{ij} = 0$  при  $i < j$  (т.е. выше диагонали).
+		\[
+		\begin{pmatrix}
+		a_{11} & 0 & 0 \\
+		\vdots      & \ddots & 0 \\
+		a_{n1}     & \cdots      & a_{nn}
+		\end{pmatrix}
+		\]
+		
+		\item Определитель верхне- (нижне-)треугольной матрицы есть произведение диагональных элементов:
+		\[
+		\det A = \prod_{i = 1}^{n} a_{ii}
+		\]
+		\item Определитель диагональной матрицы есть произведение элементов, стоящих на диагонали, так как эта матрица одновременно верхне- и нижнетреугольная.
+		\[
+		\det A = \prod_{i = 1}^{n} a_{ii}
+		\]
+		Определитель $E \in M_n$ равен 1.
+		
+		\item Пусть $A, B \in M_n$ имеют вид
+		\[
+		A =
+			\begin{pmatrix}
+			D & P\\
+			0 & R
+			\end{pmatrix},
+			\quad
+		B =
+			\begin{pmatrix}
+			D & 0\\
+			P & R
+			\end{pmatrix}
+		\]
+		Тогда они будут называться \textit{матрицами с углом нулей}.
+		Если матрицы $D$ и $R$ - квадратные, то
+		\[
+		\det A = \det D \cdot \det R
+		\]
+		\item Определитель произведения матриц есть произведение определителей матриц
+		\[
+		\det{AB} = \det{A}\cdot\det{B}
+		\]
+		
+		\[
+		\begin{matrix}
+		6 & 6 & 6 \\
+		6 & 6 & 6 \\
+		6 & 6 & 6
+		\end{matrix}
+		\]
+		
+		
+		
+		\item Дополнительным минором к элементу $a_{ij}$ матрицы $A \in \mathrm{M}_n$ называют определитель матрицы, полученной из $A$ удалением $i$-ой строки и $j$-го столбца:
+		\[\overline{M}_{ij} = \begin{vmatrix}
+		a_{11} & a_{12} & \ldots & a_{1(j-1)} & a_{1(j+1)} & \ldots & a_{1n} \\
+		a_{21} & a_{22} & \ldots & a_{2(j-1)} & a_{2(j+1)} & \ldots & a_{2n} \\
+		\vdots & \vdots & \ddots & \vdots     & \vdots     & \ddots & \vdots \\
+		a_{(i-1)1} & a_{(i-1)2} & \ldots & a_{(i-1)(j-1)} & a_{(i-1)(j+1)} & \ldots & a_{(i-1)n} \\
+		a_{(i+1)1} & a_{(i+1)2} & \ldots & a_{(i+1)(j-1)} & a_{(i+1)(j+1)} & \ldots & a_{(i+1)n} \\
+		\vdots & \vdots & \ddots & \vdots     & \vdots     & \ddots & \vdots \\
+		a_{n1} & a_{n2} & \ldots & a_{n(j-1)} & a_{n(j+1)} & \ldots & a_{nn} \\
+		\end{vmatrix}\] 
+		
+		\item Алгебраическим дополнением элемента $a_{ij}$ матрицы $A \in \mathrm{M}_n$ называют число \[A_{ij} = (-1)^{i+j}\overline{M}_{ij}\]
+		
+		\item Теорема Лапласа о разложении определителя по строке (столбцу).
+		
+		Пусть выбрана $i$-я строка матрицы $A \in \mathrm{M}_n$. Тогда определитель матрицы $A$ равен сумме всех элементов строки, умноженных на их алгебраические дополнения:
+		\[\det{A} = \sum_{k = 1}^{n} a_{ik}A_{ik}\]
+		
+		\item Лемма о фальшивом разложении определителя.
+		
+		Сумма произведений всех элементов некоторой фиксированной строки (столбца) матрицы $A$ на алгебраические дополнения соответствующих элементов любой другой фиксированной строки (столбца) равна нулю.
+		
+		При фиксированных $i,\ k \in \{1,\ \ldots,\ n\},\ i \ne k$
+		$$ \sum_{j=1}^n a_{ij} A_{kj} = 0 $$
+		
+		При фиксированных $j,\ m \in \{1,\ \ldots,\ n\},\ j \ne m$
+		$$ \sum_{i=1}^n a_{ij} A_{im} = 0 $$
+		
+		\item Матрица $A^{-1} \in M_n$ называется обратной матрицей к $A$, если $AA^{-1} = A^{-1}A = E$.
+		
+		
+		\item Матрица $A \in M_n$ называется невырожденной, если $\det A \ne 0$. 
+		
+		\item Матрица, присоединённая к $A$ — $\hat{A} = (A_{ij})^T$ — матрица из алгебраических дополнений элементов $A$: 
+		\[\hat A = \begin{pmatrix}
+		A_{11} & A_{21} & A_{31} & \ldots & A_{n1} \\
+		A_{12} & A_{22} & \ldots & \ldots & A_{n2} \\
+		A_{13} & \vdots & \ddots &  & \vdots \\
+		\vdots & \vdots &  & \ddots & \vdots \\
+		A_{1n} & A_{2n} & \ldots & \ldots & A_{nn} \\
+		\end{pmatrix}.\]
+		
+		\item Матрица обратима тогда и только тогда, когда она невырожденна
+	
+		\item Обратная матрица считается по следующей формуле:
+		$$A^{-1} = \displaystyle\frac{1}{\det A} \cdot \hat{A}$$
+		\item Произведение матриц обратимо тогда, когда матрицы невырожденны и произведение матриц не вырожденно, тогда
+		\[
+		(AB)^{-1} = B^{-1}\cdot A^{-1}
+		\]
+		\item Пусть $A$ — матрица коэффициентов некой СЛУ, в которой количество уравнений равно количеству неизвестных, $\vec b$ — вектор правых частей, матрицы $A_i$ -- матрицы, полученные из $A$ заменой в них $i$-ого столбца на $\vec b$. Если $\det A \not= 0$, то СЛУ имеет единственное решение, которое может быть найдено по формулам 
+		$$
+		x_i = \frac{\det A_i}{\det A}.
+		$$ комплексных
+		Эти формулы называются формулами Крамера.
+		\item Комплексным числом называется пара чисел $(a, b) \in R^2$, где число $a$ называется действительной частью, $b$ - мнимой.
+		
+		\subitem 1) Алгебраической формой записи комплексного числа называется запись вида
+		\[
+		a + bi,
+		\]
+		где $a$ - действительная, $b$ - мнимая части.
+		\subitem 2) Суммой двух комплексных чисел является комплексное число:
+		\[
+		(a + bi) + (c + di) = (a + c) + (b + d)i
+		\]
+		\subitem 3) Произведением двух комплексных чисел является комплексное число:
+		\[
+			(a + bi) \cdot (c + di) = (ac - bd) + (bc + ad)i
+		\]
+		\subitem 4) Частным двух комплексных чисел является комплексное число:
+		\[
+		\frac{(a + bi)}{(c + di)} = \frac{ac + bd}{c^2 + d^2} + \frac{bc - ad}{c^2 + d^2}i
+		\]
+		
+		\item Отображение $\mathbb{C} \rightarrow \mathbb{C} : a + bi \mapsto a - bi$ называется (комплексным) сопряжением. Само число $\overline{z} = a - bi$ называется (комплексно) сопряженным к числу $z = a + bi$. 
+		
+		Свойства комплексного сопряжения:
+		\begin{enumerate}
+			\item Комплексное сопряжение суммы это сумма комплексных сопряжений:
+			\[
+			\overline{a + b} = \overline{a} + \overline{b}
+			\]
+		\end{enumerate}
+		
+		\item Комплексные числа удобно представлять в виде точек на плоскости:
+		\begin{center}
+		
+		%{\includegraphics{z-as-vector}}
+		\begin{tikzpicture}
+		\begin{axis}
+		[
+		axis lines\begin{center}
+		 = center,
+		xtick={0, 3},
+		xticklabels = {$0$, $a$},
+		ytick = {2},
+		yticklabels = {$b$},
+		xlabel=$\mathrm{Re}\,z$,
+		ylabel=$\mathrm{Im}\,z$,
+		ymin=-1,
+		ymax=+3,
+		xmin=-1,
+		xmax=+4
+		]
+		\node [right, red] at (axis cs:  3, 2) {$a+bi$};
+		\addplot[->] coordinates { (0,0) (3,2) };
+		\addplot [dashed, black] coordinates { (3, 0) (3,2) };
+		\addplot [dashed, black] coordinates { (0,2) (3,2) };
+		\end{axis}
+		\end{tikzpicture}
+		\end{center}
+		В таком представлении сложение комплексных чисел сопоставляется со сложением векторов, а сопряжение — с отражением относительно оси $Ox (\Re z)$.
+		
+		\item Модулем $|z|$ комплексного числа $z = a + bi$ называется длина соответствующего вектора $|a+bi| = \sqrt{a^2 + b^2}$.
+		\subitem 1) $|z| \geqslant 0$, причем $|z| = 0$ тогда и только тогда, когда $z = 0$;
+		\subitem 2) $|z + w| \leqslant |z| + |w|$ — неравенство треугольника;
+		\subitem 3) $|z|\cdot|\overline{z}| = |z|^2$;
+		\subitem 4) $|zw| = |z| \cdot |w|$
+		
+		
+		\item Пусть есть $z \in \C, z \ne 0$. Тогда аргументом числа $z$ будет называться всякий такой угол $\varphi$, что
+		\[
+		\cos \varphi = \frac{a}{|z|} = \frac{a}{\sqrt{a^2 + b^2}}; \quad \sin \varphi = \frac{b}{|z|} = \frac{b}{\sqrt{a^2 + b^2}}.
+		\]
+		
+		Неформально говоря, аргумент $z$ — это угол между осью $Ox$ и соответствующим вектором.
+		\item Запись $z = |z|(\cos\varphi + i\sin\varphi)$ называется тригонометрической формой комплексного числа $z$.
+		
+		Пусть $z_1 = |z_1|\left(\cos{\varphi_1}+i\sin{\varphi_1}\right)$, $z_2 = |z_2|\left(\cos{\varphi_2} + i\sin{\varphi_2}\right)$. Тогда 
+		\[
+		z_1z_2 = |z_1||z_2|\left(\cos\left(\varphi_1 + \varphi_2\right) + i\sin\left(\varphi_1 + \varphi_2\right)\right)
+		\]
+		\[\cfrac{z_1}{z_2} = \cfrac{|z_1|}{|z_2|}\left(\cos\left(\varphi_1-\varphi_2\right) + i\sin\left(\varphi_1 - \varphi_2\right)\right)\]
+		
+		\item Формула Муавра. Пусть $z = |z|\left(\cos\varphi + i \sin \varphi\right)$. Тогда:
+		\[z^n = |z|^n\left(\cos\left(n\varphi\right)+i\sin\left(n\varphi\right)\right) \quad \forall n \in \mathbb{Z}.
+		\]
+		
+		\item 	Корнем $n$-й степени из числа $z$ называется всякое $w\in\mathbb C$: $w^n=z$. То есть
+		\[
+		\sqrt[n]{z} = \{w\in\mathbb C\ |\ w^n = z\}.
+		\]
+		
+		\[ \sqrt[n]{z} = \Biggl\{\sqrt[n]{|z|}\left(\cos\cfrac{\varphi+2\pi k}{n}+i\sin\cfrac{\varphi+2\pi k }{n}\right)\ \biggl|\ k=0,\ldots,n-1\Biggr\}
+		\]
+		
+		\item Основная теорема алгебры. Всякий многочлен $P\left(z\right) = a_nz^n + a_{n-1}z^{n-1} + \ldots \hm{+} a_1z + a_0$ степени $n$, где $n \geqslant 1$, $a_n \neq 0$, и $a_0,\ldots,a_n \in \mathbb{C}$ имеет корень.
+		
+		\item Теорема Безу. Пусть есть многочлен $P(x)$ с действительными коэффициентами. Тогда утверждается, что остаток от деления такого многочлена на $(x - c)$ равен $P(c)$
+		
+		Следствие: всякий многочлен степени $n$ имеет $n$ комплексных корней, с учетом кратности.
+		
+		\item Кратностью корня многочлена $f(x)$ называется наибольшее $k \in \Z$, такое что
+		\[
+		f(x) \ \vdots \ (x - c)^k
+		\]
+		
+		\item Векторным пространством $V$ над полем $F$  называется множество векторов $V(F)$, на котором заданы операции сложения и умножения на скаляр:
+		\[
+		+: V \times V \to V\]\[
+		\times: F \times V \to V
+		\]
+		удовлетворяющими следующим аксиомам:
+		\begin{enumerate}
+			\item $x + y = y + x; \ \forall x, y \in V$
+			\item $(x + y) + z = x + (y + z); \ \forall x, y, z \in V$
+			\item $\exists \vec{0}: x + \vec{0} = \vec{0} + x = x$
+			\item $\forall x \in V \ \exists (-x): x + (-x) = \vec{0}$
+			\item $(\alpha + \beta) \cdot x = \alpha x + \beta x$
+			\item $x \cdot (\alpha + \beta) = x\alpha  + x\beta $
+			\item $\alpha(\beta x) = (\alpha \beta) x$
+			\item $1 \cdot x = x$
+		\end{enumerate}
+		
+		
+		\item Подпространством векторного пространства называют подмножество $U \subseteq V$, если:
+		\begin{enumerate}
+			\item $\vec{0} \in U$
+			\item $x, y \in U \Rightarrow x + y \in U$
+			\item $\forall \alpha \in F \ x \in U \Rightarrow \alpha x \in U$
+		\end{enumerate}
+		
+		\item Подмножество в $R^n$, являющееся решением системы однородных линейных уравнений вида $A\vec{x} = \vec{0}$ является подпространством. 
+		
+		\item Всякий вектор вида $\alpha_1v_1 + \ldots + \alpha_nv_n$, где $v \in V, \alpha \in F$ называется линейной комбинацией.
+		
+		\item Множество всех линейных комбинаций векторов из $S \subseteq V$ называется линейной оболочкой $S$ и обозначается $\langle S \rangle$
+		
+		\item Линейная оболочка векторного пространства сама является векторным пространством.
+		
+		\item Векторное пространство называется конечномерным, если оно порождается конечным числом векторов, и бесконечномерным в противном случае.
+		
+		\item Конечный набор векторов $v_1, \ldots, v_n$ линейно зависим, если 
+		\[
+		\exists (\alpha_1, \ldots, \alpha_n) \ne (0, \ldots, 0) \Rightarrow \alpha_1v_1 + \ldots + \alpha_nv_n = 0
+		\]
+		
+		\item Конечный набор векторов $v_1, \ldots, v_n$ линейно независим, если он не линейно зависим, то есть 
+		\[
+		\al_1v_1 + \ldots + \al_nv_n = \vec{0} \ \Rightarrow \ \al_1 = \ldots = \al_n = 0
+		\]
+		
+		\item Возьмём $a_1,\ a_2,\ \ldots,\ a_r$ и $b_1,\ b_2,\ \ldots,\ b_s$ --- две системы векторов, причём $r < s$. Пусть вторая система линейно выражается через первую, то есть $b_i \in \langle a_1,\ a_2,\ \ldots,\ a_r \rangle \forall\ i \in \{1,\ \ldots ,\ s\}$. Тогда система $b_1,\ b_2,\ \ldots,\ b_s$ линейно зависисима.
+		
+		\item Базисом конечномерного векторного пространства $S$ называется такой набор линейно независимых векторов $v = \{e_1, \ldots e_n\}$, такой что $\langle v\rangle = S$. 
+		
+		\item Пусть есть векторное пространство $S$. Размерностью этого пространства будет число векторов в базисе этого пространства.
+		
+		\item Пусть $v_1, \ldots, v_m \in V$ - линейно независимые векторы. Тогда $\forall v \in V$:
+		\begin{enumerate}
+			\item $	v, v_1, \ldots, v_m$ - также линейно независимые векторы, или
+			\item $ v \in \langle v_1, \ldots, v_m\rangle$
+		\end{enumerate}
+		
+		\item Пусть есть векторное пространство $S$ и его подпространство $S' \subseteq S$. Тогда $dim \ S' \leq dim \ S$
+		
+		\item Фундаментальной системой решений ОСЛУ называется базис решений этой системы.
+	\end{enumerate}
+
+	\begin{center}
+		\line(1,0){450}
+	\end{center}
+		
+\end{document}

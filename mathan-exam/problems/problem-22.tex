@@ -1,0 +1,118 @@
+Дайте определения бесконечно малой и бесконечно большой последовательностей и сформулируйте их свойства. Сформулируйте арифметические свойства пределов и докажите их (одно на
+выбор экзаменатора). Найдите $\displaystyle \lim_{n\rightarrow 2} 
+        \frac{
+               \sqrt{4x - 3} -
+               \sqrt{1 + 2x}
+             }
+             {
+               \arcsin(x-2)
+             }.$
+
+\subsection*{Решение}
+
+\begin{definition} Последовательность $ \{ x_ n \} $ называется бесконечно малой, 
+    если $\displaystyle \lim_{n \rightarrow \infty} x_n = 0$, т.е. 
+    $\forall \eps > 0\ \exists N = N(\eps):|x_n| < \eps\ \forall n > N(\eps).$
+\end{definition}
+
+\textbf{Свойства б.м. последовательностей:}
+    \begin{enumerate}
+        \item $\exists \lim y_n = a \Leftrightarrow \{x_n = y_n - a\}$ -- бесконечно малая.
+        \item Сумма \textbf{конечного} числа бесконечно малых посл-ей -- есть бесконечно малая посл-ть.
+        \item Сумма бесконечно малой и ограниченной последовательности -- бесконечно малая последовательность.
+    \end{enumerate}
+
+\begin{definition} Последовательность $ \{ x_ n \} $ называется бесконечно большой, 
+    если $\displaystyle \lim_{n \rightarrow \infty} x_n = \infty$, т.е. 
+    $\forall \eps > 0\ \exists N = N(\eps):|x_n| > \eps\ \forall n > N(\eps).$
+\end{definition}
+\textbf{Свойства б.б. последовательностей.}
+    \begin{enumerate}
+        \item Сумма бесконечно больших последовательностей одного знака есть бесконечно большая последовательность того же знака.
+        \item Сумма бесконечно большой и ограниченной последовательностей есть бесконечно большая последовательность.
+        \item Произведение бесконечно больших последовательностей есть бесконечно большая последовательность. Произведение бесконечно большой последовательности на константу есть бесконечно большая последовательность.
+    \end{enumerate}
+
+\subsection*{Арифметические свойства пределов.}
+Если существует $\lim x_n = a$ и $\lim y_n = b$, то
+    \begin{enumerate}
+        \item $\lim (x_n \pm y_n) = \lim (x_n) \pm \lim(y_n) = a \pm b$.
+
+            \begin{proof}[Доказательство]
+                $\exists\alpha_n = x_n - a$ -- б. м. и
+                $\exists\beta_n = y_n - b$ -- б. м.
+
+                Тогда внимательно посмотрим на $z_n = x_n + y_n$. Осознаем, что \linebreak $\{z_n - a - b\}$ -- бесконечно малая последовательность ($z_n - a - b = \alpha_n + \beta_n$ -- конечная сумма б.м. $|z_n - a - b| \le |x_n - a| + |y_n - b| = |\alpha_n| + |\beta_n|$).
+
+                По свойству (1) б.м.: $\{ z_n - a - b \}$ - беск. малая $\Leftrightarrow$ $\lim z_n = a + b$.
+            \end{proof}
+
+        \item $\lim (x_n y_n) = \lim (x_n) \lim (y_n) = a \cdot b$.
+
+                \begin{proof}[Доказательство 2]
+                    $x_n = \alpha_n + a$  и
+                    $y_n = \beta_n + b$, где $\alpha,\ \beta$ - беск. малые.
+
+                    Тогда $\displaystyle \lim x_n y_n = \lim (\alpha_n + a)(\beta_n + b) = \lim (\alpha_n\beta_n + a\beta + b\alpha + ab) = 0 + 0 + 0 + ab = ab$.
+                \end{proof}
+
+        \item $\exists \lim (\frac{x_n}{y_n}) = \frac{\lim (x_n)}{\lim (y_n)} = \frac{a}{b} $, если $\forall n:\ y_n \ne 0,\ b \ne 0$.
+
+        \begin{proof}[Доказательство 3]
+            $x_n = \alpha_n + a$  и
+            $y_n = \beta_n + b$, где $\alpha,\ \beta$ - беск. малые.
+
+            Тогда $\displaystyle \lim (\frac{x_n}{y_n}) = \
+            lim (\frac{\alpha_n + a}{\beta_n + b}) = 
+            \lim (\frac{a}{\beta_n + b} + \alpha \frac{1}{\beta_n + b}) = \lim (\frac{a}{\beta_n + b})$, но так как $\lim (\frac{a}{\beta_n + b} - \frac{a}{b}) = 0$, то $\lim \frac{a}{\beta_n + b} = \frac{a}{b}$.
+        \end{proof}
+    \end{enumerate}
+    \subsection*{Задание}
+        \begin{enumerate}
+            \item Домножим на сопряженное
+             $\displaystyle \lim_{n\rightarrow 2} 
+        \frac{
+               (\sqrt{4x - 3} -
+               \sqrt{1 + 2x}) 
+               \cdot
+               (\sqrt{4x - 3} +
+               \sqrt{1 + 2x})
+             }
+             {
+               \arcsin(x-2)
+               \cdot
+               (\sqrt{4x - 3} +
+               \sqrt{1 + 2x})
+             }.$
+            \item Скобка в знаментале стремится к $2 \cdot \sqrt{5}$
+            При $х -> 0, arcsin(x)~x$
+            \[
+            \lim_{n\rightarrow 2} 
+        \frac{
+               (\sqrt{4x - 3} -
+               \sqrt{1 + 2x}) 
+               \cdot
+               (\sqrt{4x - 3} +
+               \sqrt{1 + 2x})
+             }
+             {
+               \arcsin(x-2)
+               \cdot
+               (\sqrt{4x - 3} +
+               \sqrt{1 + 2x})
+             } =
+        \frac{
+               2 
+               \cdot
+               (x-2)
+             }
+             {
+               (x-2)
+               \cdot
+               2 \cdot \sqrt{5}
+             } 
+             =
+            \frac{1}{\sqrt{5}}
+             \]
+            \item Ответ: $\frac{1}{\sqrt{5}}$
+        \end{enumerate}

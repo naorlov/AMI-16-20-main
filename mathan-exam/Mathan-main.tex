@@ -1,0 +1,273 @@
+\documentclass[a4paper,12pt]{article}
+
+%% Начало шапки
+
+%% Настройка поддержки русского языка
+\usepackage{cmap}                   % Поиск по кириллице
+\usepackage{mathtext}               % Кириллица в формулах
+\usepackage[T1,T2A]{fontenc}        % Кодировки шрифтов
+\usepackage[utf8]{inputenc}         % Кодировка текста
+\usepackage[english,russian]{babel} % Подключение поддержки языков
+\usepackage{subfiles}
+%% Настройка размеров полей
+\usepackage[top=0.7in, bottom=0.75in, left=0.625in, right=0.625in]{geometry}
+
+%% Математические пакеты
+\usepackage{mathtools}              % Тот же amsmath, только с некоторыми поправками
+\usepackage{amssymb}                % Математические символы
+\usepackage{amsthm}                 % Оформление теорем
+\usepackage{amstext}                % Текстовые вставки в формулы
+\usepackage{amsfonts}               % Математические шрифты
+\usepackage{icomma}                 % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+\usepackage{enumitem}               % Для выравнивания itemize (\begin{itemize}[align=left])
+\usepackage{array}                  % Таблицы и матрицы
+\usepackage{multirow}
+
+%% Алгоритмические пакеты и их настройки
+\usepackage{algorithm}              % Шапка алгоритма
+\usepackage{algorithmicx}           % Написание алгоритмов
+\usepackage[noend]{algpseudocode}   % Написание псевдокода; убраны end
+\usepackage{listings}               % Для кода на каком-либо языке программиования
+\renewcommand{\algorithmicrequire}{\textbf{Ввод:}}              % Ввод
+\renewcommand{\algorithmicensure}{\textbf{Вывод:}}              % Вывод
+\floatname{algorithm}{Алгоритм}                                 % Название алгоритма
+\renewcommand{\algorithmiccomment}[1]{\hspace*{\fill}\{// #1\}} % Комментарии
+\newcommand{\algname}[1]{\textsc{#1}}                           % Вызов функции в алгоритме
+
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%% Шрифты
+\usepackage{euscript}               % Шрифт Евклид
+\usepackage{mathrsfs}               % \mathscr{}
+
+%% Графика
+\usepackage[pdftex]{graphicx}       % Вставка картинок
+\graphicspath{{images/}}            % Стандартный путь к картинкам
+\usepackage{tikz}                   % Рисование всего
+\usepackage{pgfplots}               % Графики
+\usetikzlibrary{calc,matrix}
+
+%% Прочие пакеты
+\usepackage{indentfirst}                    % Красная строка в начале текста
+\usepackage{epigraph}                       % Эпиграфы
+\usepackage{fancybox,fancyhdr}              % Колонтитулы
+\usepackage[colorlinks=true, urlcolor=blue]{hyperref}   % Ссылки
+\usepackage{titlesec}                       % Изменение формата заголовков
+\usepackage[normalem]{ulem}                 % Для зачёркиваний
+\usepackage[makeroom]{cancel}               % И снова зачёркивание (на этот раз косое)
+
+%% Прочее
+\mathtoolsset{showonlyrefs=true}        % Показывать номера только у тех формул,
+% на которые есть \eqref{} в тексте.
+\renewcommand{\headrulewidth}{1.8pt}    % Изменяем размер верхнего отступа колонтитула
+\renewcommand{\footrulewidth}{0.0pt}    % Изменяем размер нижнего отступа колонтитула
+
+%Прочее
+\usepackage{forest} % Деревья
+
+\renewcommand{\Re}{\mathrm{Re\:}}
+\renewcommand{\Im}{\mathrm{Im\:}}
+\newcommand{\Arg}{\mathrm{Arg\:}}
+\renewcommand{\arg}{\mathrm{arg\:}}
+\newcommand{\Mat}{\mathrm{Mat}}
+\newcommand{\M}{\mathrm{M}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\isom}{\xrightarrow{\sim}} 
+\newcommand{\leftisom}{\xleftarrow{\sim}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Ker}{\mathrm{Ker}\:}
+\newcommand{\rk}{\mathrm{rk}\:}
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\ort}{\mathrm{ort}}
+\newcommand{\pr}{\mathrm{pr}}
+\newcommand{\vol}{\mathrm{vol\:}}
+\newcommand{\Tr}{\mathrm{tr\:}}
+\newcommand{\sgn}{\mathrm{sgn\:}}
+\newcommand{\al}{\alpha}
+
+%% Определения
+\newtheorem*{definition}{Определение}
+\newtheorem*{Proof}{Доказательство}
+\newtheorem{Def}{Определение}
+\newtheorem*{defi}{Определение}
+\newtheorem*{Lemma}{Лемма}
+\newtheorem*{examples}{Пример}
+\newtheorem*{Consequence}{Следствие}
+\newtheorem*{theorem}{Теорема}
+\newtheorem*{theor}{Теорема}
+\newtheorem*{ther}{Теорема}
+\newtheorem*{task}{Задача}
+\newtheorem*{Properties}{Свойства}
+\newtheorem*{Note}{Замечание}
+\newtheorem*{ticket}{Билет}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\C}{\mathbb{C}}
+\renewcommand{\L}{\mathscr{L}}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\newcommand{\e}{\mathbb{e}}
+\renewcommand{\l}{\lambda}
+\newcommand{\E}{\mathbb{E}}
+\def\eps{\varepsilon}
+\def\limref#1#2{{#1}\negmedspace\mid_{#2}}
+\newcommand{\vvector}[1]{\begin{pmatrix}{#1}_1 \\\vdots\\{#1}_n\end{pmatrix}}
+\renewcommand{\vector}[1]{({#1}_1, \ldots, {#1}_n)}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+\newcommand{\divby}{\ \tikz \foreach \y in {0ex, 0.65ex, 1.3ex} \fill (0,\y) circle (0.5pt);\ }
+
+\definecolor{Gray}{gray}{0.9}
+\newcolumntype{g}{>{\columncolor{Gray}}c}
+
+\newtheorem*{canonther}{Теорема о приведении матрицы к каноническому виду}
+\newtheorem*{lem}{Лемма}
+\newtheorem*{lem1}{Лемма 1}
+\newtheorem*{lem2}{Лемма 2}
+\newtheorem*{lem3}{Лемма 3}
+\renewcommand{\thesection}{Задача \arabic{section}}
+\setcounter{section}{3}
+\renewcommand{\thesubsection}{Пункт \asbuk{subsection})}
+\newcommand{\answer}[1]{\\ \textit{Ответ:} #1}
+\newcommand{\drv}{^{\prime}}
+
+\newcommand{\ndiv}{\hspace{-4pt}\not|\hspace{2pt}}
+
+\begin{document}
+	\title{Материалы для подготовки к экзамену по математическому анализу.}
+	\author{
+		Орлов Никита,
+		Бормисов Влад,
+		Кобелев Максим,
+		Ткачев Андрей,\\
+		Семенов Михаил,
+		Балабан Ирина,
+		Логинов Михаил,
+		Бернштейн Наталья,\\
+		Тимур Петров, 
+		Усачев Данила,
+		Ушакова Алена,
+		Элбакян Мовсес,\\
+		Лайд Егор, 
+		Гутор Тимофей,
+		Евсеев Борис
+		}
+	\maketitle
+	
+	\begin{ticket}[1]
+		\subfile{./problems/problem-1}
+		\newpage
+	\end{ticket}
+	
+	\begin{ticket}[2]
+		\subfile{./problems/problem-2}
+		\newpage
+	\end{ticket}
+	
+	%\input{problem-3}
+	
+	\begin{ticket}[4]
+		\subfile{./problems/problem-4}
+		\newpage
+	\end{ticket}
+	
+	\begin{ticket}[5]
+		\subfile{./problems/problem-5}
+		\newpage
+	\end{ticket}
+	
+	\begin{ticket}[6]
+		\subfile{./problems/problem-6}
+		\newpage
+	\end{ticket}
+	
+	\begin{ticket}[9]
+		\subfile{./problems/problem-9}
+		\newpage
+	\end{ticket}
+	
+	\begin{ticket}[10]
+		\subfile{./problems/problem-10}
+		\newpage
+	\end{ticket}
+	
+	\begin{ticket}[11]
+		\subfile{./problems/problem-11}
+		\newpage
+	\end{ticket}
+	
+	\begin{ticket}[12]
+		\subfile{./problems/problem-12}
+		\newpage
+	\end{ticket}
+	
+	\begin{ticket}[13]
+		\subfile{./problems/problem-13}
+		\newpage
+	\end{ticket}
+	
+	\begin{ticket}[14]
+		\subfile{./problems/problem-14}
+		\newpage
+	\end{ticket}
+	
+	\begin{ticket}[15]
+		\subfile{./problems/problem-15}
+		\newpage
+	\end{ticket}
+	
+	\begin{ticket}[22]
+		\subfile{./problems/problem-22}
+		\newpage
+	\end{ticket}
+	\begin{ticket}[23]
+		\subfile{./problems/problem-23}
+		\newpage
+	\end{ticket}
+	
+	\begin{ticket}[25]
+		\subfile{./problems/problem-25}
+		\newpage
+	\end{ticket}
+
+	\begin{ticket}[26]
+		\subfile{./problems/problem-26}
+		\newpage
+	\end{ticket}
+	
+	\begin{ticket}[28]
+		\subfile{./problems/problem-28}
+		\newpage
+	\end{ticket}
+	
+	\begin{ticket}[29]
+		\subfile{./problems/problem-29}
+		\newpage
+	\end{ticket}
+	
+	\begin{ticket}[30]
+		\subfile{./problems/problem-30}
+		\newpage
+	\end{ticket}
+	
+	\begin{ticket}[34]
+		\subfile{./problems/problem-34}
+		\newpage
+	\end{ticket}
+	
+	\begin{ticket}[35]
+		\subfile{./problems/problem-35}
+		\newpage
+	\end{ticket}
+	
+	\begin{ticket}[36]
+		\subfile{./problems/problem-36}
+		\newpage
+	\end{ticket}
+
+	
+	
+\end{document}

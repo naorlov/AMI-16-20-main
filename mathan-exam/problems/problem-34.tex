@@ -1,0 +1,88 @@
+Дайте определение производных и дифференциалов высших порядков. Докажите
+формулу Лейбница. Найдите $y^{(10)}(0)$, если $y=\frac{1}{4y^2-8y+3}$
+
+\subsection*{Решение}
+\begin{definition}
+    Производной $n$-го порядка называется рекуррентное соотношение:
+        $$
+        f^{(n)}(x) = (f^{(n-1)}(x))\drv; \,\,\,
+        f^{(0)}(x) = f(x)
+        $$
+\end{definition}
+
+\begin{definition}
+    Дифференциалом $n$-го порядка называется рекуррентное соотношение:
+    $$
+        d^{(n)} = f^{(n)}dx^{n}
+    $$
+\end{definition}
+\begin{proof}
+    Воспользуемся индукцией.
+
+    \par\underline{База:} $n=2$, тогда $d^2f = d(df) =
+    d(f\drv x dx) = d(f\drv)\cdot dx = (f\drv(x))\drv\cdot dx\cdot dx =
+    f^{(2)}(x)\cdot dx^2$.
+
+    \par\underline{Переход:}
+    $d^{n}f = d(d^{n-1}f) = (\text{по предположению индукции}) =
+    f^{(n)}(x)dx^n$
+\end{proof}
+
+\begin{definition}
+Формула Лейбница для производных произведений функций $n$-го порядка:
+    Пусть $f(x)$ и $g(x)$ \textemdash $n$ раз дифференцируемые функции,
+    тогда
+    $$
+        (f\cdot g)^{(n)} = \sum\limits_{k=0}^{n} {n \choose k}
+        f^{(n-k)}\cdot g^{(k)}
+    $$
+\end{definition}
+\begin{proof}
+    \underline{База:} $n=1$, $(f\cdot g)\drv = f\drv g + fg\drv = {1
+    \choose 0}\cdot f^{(1)}g^{(0)} + {1 \choose 1}\cdot f^{(0)}g^{(1)} =
+    \sum\limits_{k=0}^{1} {n \choose k} f^{(n-k)}\cdot g^{(k)}$
+
+    \underline{Переход:} рассмотрим $n+1$ производную:
+    $(fg)^{(n+1)} =
+    ( \sum\limits_{k=0}^{n} {n \choose k} f^{(n-k)}\cdot g^{(k)})\drv =
+    \sum\limits_{k=0}^{n} {n \choose
+    k}(f^{(n-k+1)}g^{(k)}+f^{(n-k)}g^{(k+1)}) =
+    \sum\limits_{k=0}^{n} {n \choose k} f^{(n-k+1)}\cdot g^{(k)}
+    +
+    \sum\limits_{k=0}^{n} {n \choose k} f^{(n-k)}\cdot g^{(k+1)}
+    $
+    Докажем, что эти две суммы можно преобразовать в одну сумму
+    произведений. Сменим индекс суммирования во второй сумме: $k=m-1$, в
+    первой $k=m$. Тогда элементы первой суммы будут иметь вид
+    ${n \choose m} f^{(n-m+1)}\cdot g^{(m)}$, а элементы второй \textemdash
+    ${n \choose m-1} f^{(n-(m-1))}\cdot g^{((m-1)+1)} =
+    {n \choose m-1} f^{(n-m+1))}\cdot g^{(m)}.
+    $
+    Из комбинаторики известно, что ${n \choose m} + {n \choose m-1} = {n+1
+    \choose m}$, тогда сумма таких элементов имеет вид:
+
+    ${n \choose m} f^{(n-m+1)}\cdot g^{(m)} + {n \choose m-1}
+    f^{(n-(m-1))}\cdot g^{((m-1)+1)} =
+    {n+1 \choose m} f^{(n-m+1))}\cdot g^{(m)}.$
+
+    При изменении $m$ от 1 до $n$ такое объединение даёт все слагаемые
+    обеих сумм, кроме:
+    \begin{itemize}
+        \item члена $i = 0$ в первой сумме, равного ${n \choose
+            0}f^{(n-0+1)}g^{(0)} = f^{(n+1)}g^{(0)}$
+        \item члена $i = n$ вло второй сумме, равного ${n \choose
+            n}f^{(n-n)}g^{(n+1)} = f^{(0)}g^{(n+1)}$
+    \end{itemize}
+    В итоге получаем, что $(fg)^{(n+1)} =
+    f^{(n+1)}g^{(0)}
+    +
+    \sum\limits_{m=1}^{n}{n+1 \choose m}
+    f^{(n+1-m))}\cdot g^{(m)}.
+    +
+    f^{(0)}g^{(n+1)}
+    $
+    Обратная замена $m=k$, тогда
+    $
+    \sum\limits_{k=0}^{n+1}{n+1 \choose k} f^{(n+1-k))}\cdot g^{(k)}
+    $
+\end{proof}

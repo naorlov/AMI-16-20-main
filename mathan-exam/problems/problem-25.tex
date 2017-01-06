@@ -1,0 +1,80 @@
+Дайте определение функции, непрерывной в точке. Дайте класссификацию точек разрыва. Докажите по определению, что функция $y = sin(x^2)$ непрервына в любой точке.
+
+\begin{definition}
+	Функция $f(x)$ называеттся непрерываной в точке $x = x_0$, если для любой окрестности $V(y_0)$ точки $f(x_0)$ cуществует окрестность $U(y_0)$ такая, что $f(U(x_0))\subseteq V(y_0)$
+\end{definition}
+
+\begin{definition}[по Коши]
+	Функция $f(x)$ ялвяется непрерывной в точке $x = x_0$, если
+	\[
+	\forall \epsilon > 0 \ \exists \delta(\epsilon): 
+	\forall x: |x - x_0| < \delta \Rightarrow |f(x) - f(x_0)| < \epsilon
+	\]
+\end{definition}
+
+\begin{definition}[по Гейне]
+	Функция $f(x)$ ялвяется непрерывной в точке $x = x_0$, если
+	\[
+	\forall \{x_n\} \lim_{n \rightarrow \infty} x_n = x_0 \Rightarrow \lim_{n \rightarrow \infty} f(x_n) = f(x_0)
+	\]
+\end{definition}
+\begin{definition}[через приращение]
+	Функция $f(x)$ ялвяется непрерывной в точке $x = x_0$, если
+	\[
+	\lim_{\Delta x \rightarrow 0} \Delta y = \lim_{\Delta x \rightarrow 0} \left(f(x_0 + \Delta x) - f(x_0) \right) = 0
+	\]
+\end{definition}
+
+
+Классификация точек разрыва?
+\begin{enumerate}
+	\item Если $\exists \lim_{x \rightarrow a} f(x) = b$, но $\nexists f(a): f(a) = b$, то функция терпит \textit{устранимый разрыв} в точке $a$.
+	
+	\item Eсли $\exists \lim_{x \rightarrow a^{-}} f(x) = \alpha, \ \exists \lim_{x \rightarrow a^{+}} f(x) = \beta$ и $\alpha \neq \beta$, то функция терпит \textit{разрыв первого рода} в точке $a$.
+	
+	\item Если хотя бы один из одностронних пределов не существует или равен $+ \infty$ или $-\infty$, то функция терпит \textit{разрыв второго рода} в точке $a$.
+\end{enumerate}
+
+
+\subsection*{Решение}
+По определению, $f(x)$ непрерывная в точке $a$, если она определена в точке $a$ и $\lim_{\Delta x \rightarrow 0} \Delta y = \lim_{\Delta x \rightarrow 0} \left(f(x_0 + \Delta x) - f(x_0) \right) = 0$.
+
+Так как $f(x) = sin(x^2)$ определена на всем $\R$, то $\forall a \in \R \exists f(a)$.
+
+Осталось проверить верность предела
+\[
+\lim_{\Delta x \rightarrow 0} \Delta y = \lim_{\Delta x \rightarrow 0}( sin((a + \Delta x)^2) - sin(a^2)) = 0
+\]
+Найдем первый предел
+\[
+\lim_{\Delta x \rightarrow 0} sin((a + \Delta x)^2)
+=
+\lim_{\Delta x \rightarrow 0} sin(a^2 + 2\Delta xa + \Delta x^2) =
+\]
+\[
+=
+\lim_{\Delta x \rightarrow 0} sin(a^2 + 2\Delta xa) \cdot cos(\Delta x)^2
++
+\lim_{\Delta x \rightarrow 0} cos(a^2 + 2\Delta xa) \cdot sin(\Delta x)^2
+=\]
+\[
+=
+\lim_{\Delta x \rightarrow 0} sin(a^2 + 2\Delta xa) \cdot \lim_{\Delta x \rightarrow 0} cos(\Delta x)^2
+=
+\]
+\[
+\lim_{\Delta x \rightarrow 0} sin(a^2)cos(2\Delta xa)
++
+\lim_{\Delta x \rightarrow 0} cos(a^2)sin(2\Delta xa)
+=
+\]
+\[
+=
+\lim_{\Delta x \rightarrow 0} sin(a^2) = sin(a^2)
+\]
+
+В итоге получаем:
+\[
+\lim_{\Delta x \rightarrow 0} \Delta y = \lim_{\Delta x \rightarrow 0}( sin((a + \Delta x)^2) - sin(a^2)) = \lim_{\Delta x \rightarrow 0}( sin(a^2) - sin(a^2)) = 0
+\]
+\qed
