@@ -69,6 +69,22 @@ colorlinks = false, hidelinks
 \usepackage[makeroom]{cancel}               % И снова зачёркивание (на этот раз косое)
 \usepackage{subfiles}						% \subfile
 
+\titleformat{\section}
+{\Large\bfseries} % Стиль заголовка
+{}                        % префикс
+{0pt}                     % Расстояние между префиксом и заголовком
+{}                        % Как отображается префикс
+\titleformat{\subsection} % Аналогично для \subsection
+{\Large\bfseries}
+{}
+{0pt}
+{}
+\titleformat{\subsubsection} % Аналогично для \subsubsection
+{\large\bfseries}
+{}
+{0pt}
+{}
+
 % Графики
 \usepackage{pgfplots}
 %\pgfplotsset{compat=1.12}
