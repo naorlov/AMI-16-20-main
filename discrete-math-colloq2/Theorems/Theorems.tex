@@ -9,6 +9,36 @@
 	\maketitle
 	\tableofcontents
     \pagebreak
+    \section {Теорема 1}
+    \begin{theorem}
+   Пусть ${\displaystyle (\Omega ,{\mathfrak {F}},{\mathcal {P}})} (\Omega ,{\mathfrak {F}},{\mathcal {P}})$ — вероятностное пространство. Тогда для произвольных событий ${\displaystyle A_{1},A_{2},\ldots ,A_{n}} A_{1},A_{2},\ldots ,A_{n}$ справедлива формула
+
+${\displaystyle {\mathcal {P}}{\biggl (}\bigcup _{i=1}^{n}A_{i}{\biggr )}=\sum _{i}{\mathcal {P}}(A_{i})-\sum _{i<j}{\mathcal {P}}(A_{i}\cap A_{j})+\sum _{i<j<k}{\mathcal {P}}(A_{i}\cap A_{j}\cap A_{k})+\ldots +(-1)^{n-1}\,{\mathcal {P}}\left(\bigcap _{i=1}^{n}A_{i}\right).} {\mathcal {P}}{\biggl (}\bigcup _{i=1}^{n}A_{i}{\biggr )}=\sum _{i}{\mathcal {P}}(A_{i})-\sum _{i<j}{\mathcal {P}}(A_{i}\cap A_{j})+\sum _{i<j<k}{\mathcal {P}}(A_{i}\cap A_{j}\cap A_{k})+\ldots +(-1)^{n-1}\,{\mathcal {P}}\left(\bigcap _{i=1}^{n}A_{i}\right)$.
+    \end{theorem}
+    \begin{proof}
+    Её можно получить из принципа включений-исключений в форме индикаторных функций:
+
+${\displaystyle \mathbf {1} _{\bigcup _{i}A_{i}}=\sum _{i}\mathbf {1} _{A_{i}}-\sum _{i<j}\mathbf {1} _{A_{i}\cap A_{j}}+\sum _{i<j<k}\mathbf {1} _{A_{i}\cap A_{j}\cap A_{k}}+\ldots +(-1)^{n-1}\,\mathbf {1} _{A_{1}\cap \ldots \cap A_{n}}.} \mathbf {1} _{\bigcup _{i}A_{i}}=\sum _{i}\mathbf {1} _{A_{i}}-\sum _{i<j}\mathbf {1} _{A_{i}\cap A_{j}}+\sum _{i<j<k}\mathbf {1} _{A_{i}\cap A_{j}\cap A_{k}}+\ldots +(-1)^{n-1}\,\mathbf {1} _{A_{1}\cap \ldots \cap A_{n}}.$
+
+Пусть ${\displaystyle A_{i}} A_{i}$ — события вероятностного пространства ${\displaystyle (\Omega ,{\mathfrak {F}},{\mathcal {P}})} (\Omega ,{\mathfrak {F}},{\mathcal {P}})$, то есть ${\displaystyle A_{i}\in {\mathfrak {F}}} A_{i}\in {\mathfrak {F}}$. Возьмем математическое ожидание ${\displaystyle {\mathcal {M}}} {\mathcal {M}}$ от обеих частей этого соотношения, и, воспользовавших линейностью математического ожидания и равенством ${\displaystyle {\mathcal {P}}(A)={\mathcal {M}}(\mathbf {1} _{A})} {\mathcal {P}}(A)={\mathcal {M}}(\mathbf {1} _{A})$ для произвольного события ${\displaystyle A\in {\mathfrak {F}}} {\displaystyle A\in {\mathfrak {F}}}$, получим формулу включения-исключения для вероятностей.
+    
+    \end{proof}
+    
+    \sep
+    \section {Теорема 3}
+    \begin{theorem}
+   Условной вероятностью события A при условии события B называется
+
+${\displaystyle \mathbb {P} (A\mid B)={\frac {\mathbb {P} (A\cap B)}{\mathbb {P} (B)}}} \mathbb{P}(A \mid B) = \frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}$, где ${\displaystyle \mathbb {P} (A\cap B)} {\displaystyle \mathbb {P} (A\cap B)}$ — вероятность наступления обоих событий сразу.
+    \end{theorem}
+    \begin{proof}
+    Пусть ровно r исходов события B входят и в событие А. Исходы события В уже реализовались
+    В данном испытании произошло одно из t событий, входящих в B. Все элементарные события равновероятны, следовательно, для данного испытания вероятность наступления произвольного элементарного события, входящего в B равна 1/t. Тогда по классическому определению вероятности, в данном испытании событие A произойдет с вероятностью r/t.
+    $P(A|B) = \frac{\frac{r}{m}}{\frac{t}{m}} = \frac{P(AB)}{P{B}}$
+
+    
+    \end{proof}
+    \sep
 	\section{Теорема 4}
 	\begin{theorem}
 		Математическое ожидание $E$ линейно.
