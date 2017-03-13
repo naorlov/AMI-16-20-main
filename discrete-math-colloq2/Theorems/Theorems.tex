@@ -46,15 +46,22 @@ ${\displaystyle \mathbf {1} _{\bigcup _{i}A_{i}}=\sum _{i}\mathbf {1} _{A_{i}}-\
     \sep
     \section {Теорема 3}
     \begin{theorem}
-   Условной вероятностью события A при условии события B называется
+   Формула полной вероятности позволяет вычислить вероятность интересующего события через условные вероятности этого события в предположении неких гипотез, а также вероятностей этих гипотез.
 
-${\displaystyle \mathbb {P} (A\mid B)={\frac {\mathbb {P} (A\cap B)}{\mathbb {P} (B)}}} \mathbb{P}(A \mid B) = \frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}$, где ${\displaystyle \mathbb {P} (A\cap B)} {\displaystyle \mathbb {P} (A\cap B)}$ — вероятность наступления обоих событий сразу.
+Пусть дано вероятностное пространство {\displaystyle (\Omega ,{\mathcal {F}},\mathbb {P} )} (\Omega ,{\mathcal {F}},\mathbb {P} ), и полная группа попарно несовместных событий {\displaystyle \{B_{i}\}_{i=1}^{n}\subset {\mathcal {F}}} \{B_i\}_{i=1}^{n} \subset \mathcal{F}, таких что
+
+{\displaystyle \forall i\;\mathbb {P} \;(B_{i})>0;} \forall i \; \mathbb{P} \; (B_i) > 0 ; 
+{\displaystyle \forall {j\neq i}\;B_{i}\cap B_{j}=\varnothing ;} \forall{j \ne i} \; B_i \cap B_j = \varnothing ; 
+{\displaystyle \bigcup _{i=1}^{n}B_{i}=\Omega .} {\displaystyle \bigcup _{i=1}^{n}B_{i}=\Omega .}
+Пусть {\displaystyle A\in {\mathcal {F}}} A\in {\mathcal  {F}} — интересующее нас событие. Тогда получим:
+
+{\displaystyle \mathbb {P} (A)=\sum \limits _{i=1}^{n}\mathbb {P} (A\mid B_{i})\mathbb {P} (B_{i})} \mathbb{P}(A) = \sum\limits_{i=1}^{n} \mathbb{P}( A \mid B_i) \mathbb{P}(B_i).
     \end{theorem}
     \begin{proof}
-    Пусть ровно r исходов события B входят и в событие А. Исходы события В уже реализовались
-    В данном испытании произошло одно из t событий, входящих в B. Все элементарные события равновероятны, следовательно, для данного испытания вероятность наступления произвольного элементарного события, входящего в B равна 1/t. Тогда по классическому определению вероятности, в данном испытании событие A произойдет с вероятностью r/t.
-    $P(A|B) = \frac{\frac{r}{m}}{\frac{t}{m}} = \frac{P(AB)}{P{B}}$
-
+    Так как события \{B_i\}_{i=1}^{n} образуют полную систему событий, то по определению событие A можно представить следующим образом:
+A~=~A \cap \Omega ~=~ A \cap \big( \bigcup\limits_{i=1}^{n} B_{i} \big) ~=~ \bigcup\limits_{i=1}^{n} ( A \cap B_{i} )
+События \{B_i\}_{i=1}^{n} попарно несовместны, значит, события (A\cap B_{i}) тоже несовместны. Тогда, воспользовавшись определением условной вероятности, получаем:
+{P}(A)~=~{P}\Big( \bigcup\limits_{i=1}^{n} ( A \cap B_{i} ) \Big) ~=~ \sum\limits_{i=1}^{n} {P}(A\cap B_i) ~=~ \sum\limits_{i=1}^{n} {P}(A \mid B_i){P}(B_i)
     
     \end{proof}
     \sep
